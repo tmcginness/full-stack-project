@@ -55,9 +55,41 @@ app.use(methodOverride('_method')); // allow POST, PUT and DELETE from a form
 //     res.send('Hello World!');
 // });
 
+app.put('/:id', (req, res) => {
+    Coin.findByIdAndUpdate(req.params.id, req.body, {
+        new: true
+    }, (err, updatedModel) => {
+        res.redirect('/');
+    });
+});
+
+
+app.delete('/:id', (req, res) => {
+    Coin.findByIdAndRemove(req.params.id, (error, data) => {
+        res.redirect('/')
+    })
+    // res.send('deleting.....')
+})
+
 app.get('/new', (req, res) => {
     res.render('new.ejs');
 })
+
+app.get('/:id/edit', (req, res) => {
+    Coin.findById(req.params.id, (err, foundTransaction) => {
+        res.render('edit.ejs', {
+            coin: foundTransaction
+        });
+    });
+});
+
+app.get('/:id', (req, res) => {
+    Coin.findById(req.params.id, (err, foundCoin) => {
+        res.render('show.ejs', {
+            coin: foundCoin
+        });
+    });
+});
 
 app.get('/', (req, res) => {
     Coin.find({}, (error, allCoins) => {
@@ -69,12 +101,18 @@ app.get('/', (req, res) => {
     })
 })
 
+// app.get('/', (req, res) => {
+//     Coin.distinct("coin", (error, allCoins) => {
+//         res.render(
+//             'index.ejs', {
+//                 transactions: allCoins
+//             }
+//         )
+//     })
+// })
+
 app.post('/', (req, res) => {
-    // if (req.body.transactionType === 'buy') {
-    //     req.body.transactionType = true;
-    // } else {
-    //     req.body.transactionType = false;
-    // }
+
     Coin.create(req.body), (err, createdTransaction) => {
         // res.send(createdFruit);
         res.send(req.body);

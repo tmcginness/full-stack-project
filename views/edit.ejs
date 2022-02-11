@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Edit The Transaction
+    </h1>
+
+
+    </form>
+    <form action="/<%=coin.id%>?_method=PUT" method="POST">
+        Coin Symbol:
+        <input type="text" name="coin" value="<%=coin.coin%>" />
+        <br/> Date:
+        <input type="date" name="date" value="<%=coin.date%>" />
+        <br/> Number of coins:
+        <input type="number" name="amount" value="<%=coin.amount%>" />
+        <br/>Value:
+        <input type="number" name="value" value="<%=coin.value%>" />
+        <br/>Transaction Type:
+        <br/>
+        <input type="radio" name="transactionType" value="BUY" />
+        <label for="buy">BUY</label>
+        <input type="radio" name="transactionType" value="SELL" />
+        <label for="sell">SELL</label>
+        <br/>
+        <input type="submit" name="Create Transaction" value="Submit Changes" />
+        <br/>
+
+    </form>
+</body>
+
+</html>
