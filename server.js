@@ -75,6 +75,8 @@ app.get('/new', (req, res) => {
     res.render('new.ejs');
 })
 
+
+
 app.get('/:id/edit', (req, res) => {
     Coin.findById(req.params.id, (err, foundTransaction) => {
         res.render('edit.ejs', {
@@ -82,6 +84,32 @@ app.get('/:id/edit', (req, res) => {
         });
     });
 });
+
+
+
+app.get('/coin/:coin', (req, res) => {
+    Coin.find({
+        coin: req.params.coin
+    }, (error, allCoins) => {
+        res.render(
+            'coin.ejs', {
+                coin: allCoins
+            }
+        )
+    })
+})
+
+
+
+app.get('/all', (req, res) => {
+    Coin.find({}, (error, allCoins) => {
+        res.render(
+            'all.ejs', {
+                transactions: allCoins
+            }
+        )
+    })
+})
 
 app.get('/:id', (req, res) => {
     Coin.findById(req.params.id, (err, foundCoin) => {
@@ -92,7 +120,7 @@ app.get('/:id', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    Coin.find({}, (error, allCoins) => {
+    Coin.distinct("coin", (error, allCoins) => {
         res.render(
             'index.ejs', {
                 transactions: allCoins
@@ -101,15 +129,7 @@ app.get('/', (req, res) => {
     })
 })
 
-// app.get('/', (req, res) => {
-//     Coin.distinct("coin", (error, allCoins) => {
-//         res.render(
-//             'index.ejs', {
-//                 transactions: allCoins
-//             }
-//         )
-//     })
-// })
+
 
 app.post('/', (req, res) => {
 
@@ -119,6 +139,8 @@ app.post('/', (req, res) => {
     }
     res.redirect('/');
 })
+
+
 
 //___________________
 //Listener
