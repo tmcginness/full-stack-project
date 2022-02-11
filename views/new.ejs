@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Transaction</title>
+</head>
+
+<body>
+    <h1>New Transaction Here!</h1>
+    <form action="/" method="POST">
+        Coin Symbol:
+        <input type="text" name="coin" />
+        <br/> Date:
+        <input type="date" name="date" />
+        <br/> Number of coins:
+        <input type="number" name="amount" />
+        <br/>Value:
+        <input type="number" name="value" />
+        <br/>Transaction Type:
+        <br/>
+        <input type="radio" name="transactionType" value="BUY" />
+        <label for="buy">BUY</label>
+        <input type="radio" name="transactionType" value="SELL" />
+        <label for="sell">SELL</label>
+        <br/>
+        <input type="submit" name="Create Transactiono" />
+        <br/>
+
+    </form>
+</body>
+
+</html>

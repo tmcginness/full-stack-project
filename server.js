@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 const db = mongoose.connection;
 require('dotenv').config()
+const Coin = require('./models/coins.js');
 //___________________
 //Port
 //___________________
@@ -50,9 +51,36 @@ app.use(methodOverride('_method')); // allow POST, PUT and DELETE from a form
 // Routes
 //___________________
 //localhost:3000
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// });
+
+app.get('/new', (req, res) => {
+    res.render('new.ejs');
+})
+
 app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+    Coin.find({}, (error, allCoins) => {
+        res.render(
+            'index.ejs', {
+                transactions: allCoins
+            }
+        )
+    })
+})
+
+app.post('/', (req, res) => {
+    // if (req.body.transactionType === 'buy') {
+    //     req.body.transactionType = true;
+    // } else {
+    //     req.body.transactionType = false;
+    // }
+    Coin.create(req.body), (err, createdTransaction) => {
+        // res.send(createdFruit);
+        res.send(req.body);
+    }
+    res.redirect('/');
+})
 
 //___________________
 //Listener

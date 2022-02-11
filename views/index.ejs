@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <% let portfolioBalance = 0 %>
+
+        <% for (let i = 0; i < transactions.length; i++) { %>
+            <% portfolioBalance += Number(transactions[i].value) %>
+                <% } %>
+
+                    <h1 class="balance">Portfolio Balance:
+                        <%=portfolioBalance%>
+                    </h1>
+
+                    <ul>
+                        <% for (let i = 0; i <transactions.length; i++){%>
+                            <li>
+
+                                <%=transactions[i].coin; %>
+
+                                    <!-- </a> -->
+                            </li>
+                            <li>
+                                <%=transactions[i].date; %>
+                            </li>
+                            <li>
+                                <%=transactions[i].amount; %>
+                            </li>
+                            <li>
+                                <%=transactions[i].value; %>
+                            </li>
+                            <% } %>
+                    </ul>
+</body>
+
+
+</html>
