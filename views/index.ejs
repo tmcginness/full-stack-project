@@ -2,33 +2,70 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio</title>
+    <%- include('./partials/head'); %>
+        <title>Portfolio</title>
 </head>
 
-<body>
-    <% let portfolioBalance = 0 %>
+<body class="bg-light">
+    <div class="container-md">
+        <% let portfolioBalance = 0 %>
 
-        <% for (let i = 0; i < transactions.length; i++) { %>
-            <% portfolioBalance += Number(transactions[i].value) %>
-                <% } %>
 
-                    <h1 class="balance">Portfolio Balance:
+            <!-- Updating Portfolio Balance -->
+            <% for (let i = 0; i < all.length; i++) {
+            if(all[i].transactionType === 'BUY') { 
+              portfolioBalance += Number(all[i].value) }
+                else if(all[i].transactionType === 'SELL') {
+                  portfolioBalance -= Number(all[i].value) }} %>
+                <!-- Done -->
+                <div class="mb-5 mt-3 text-center">
+                    <h1 class="display-4 balance">Portfolio Balance: $
                         <%=portfolioBalance%>
                     </h1>
-                    <nav>
-                        <a href="/new">Add a new transaction!</a>
-                    </nav>
+
+                    <a class="btn btn-dark" href="/new">Add a new transaction!</a>
+                </div>
+                <!-- Find Unique Coins -->
+
+                <div class="row ">
                     <% for (let i = 0; i <transactions.length; i++){%>
-                        <div>
-                            <a href="/coin/<%=transactions[i]%>">
-                                <%= transactions[i] %>
-                            </a>
-                        </div>
-                        <% } %>
+                        <% let currentCoin = transactions[i] %>
+
+                            <div class="text-center col-md-4 col-sm-6 p-0 border bg-dark">
+                                <div class="">
+                                    <a class="text-white" href="/coin/<%=transactions[i]%>">
+                                        <%= currentCoin %>
+                                    </a>
+                                </div>
+                                <div class="p-3">
+                                    <a class="bg-dark" href="/coin/<%=transactions[i]%>">
+                                        <img class="coinImg" src="https://cryptoicon-api.vercel.app/api/icon/<%=transactions[i].toLowerCase();%>" alt="<%=transactions[i]%> Logo">
+                                    </a>
+                                </div>
+
+
+                                <!-- Find Coin Amounts -->
+                                <% let coinBalance = 0 %>
+                                    <% for (let i = 0; i < all.length; i++) { 
+                                if(all[i].coin === currentCoin && all[i].transactionType === 'BUY'){ 
+                                   coinBalance += Number(all[i].amount) 
+                                } else if (all[i].coin === currentCoin && all[i].transactionType === 'SELL'){
+                                    coinBalance -= Number(all[i].amount) 
+                                }} %>
+                                        <div class="bg-dark text-white">
+                                            Balance:
+                                            <%=coinBalance %>
+                                        </div>
+
+
+
+
+                            </div>
+                            <% } %>
+                </div>
+    </div>
+
+
 
 
 </body>

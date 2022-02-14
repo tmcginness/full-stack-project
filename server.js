@@ -55,6 +55,7 @@ app.use(methodOverride('_method')); // allow POST, PUT and DELETE from a form
 //     res.send('Hello World!');
 // });
 
+
 app.put('/:id', (req, res) => {
     Coin.findByIdAndUpdate(req.params.id, req.body, {
         new: true
@@ -64,6 +65,7 @@ app.put('/:id', (req, res) => {
 });
 
 
+
 app.delete('/:id', (req, res) => {
     Coin.findByIdAndRemove(req.params.id, (error, data) => {
         res.redirect('/')
@@ -71,9 +73,12 @@ app.delete('/:id', (req, res) => {
     // res.send('deleting.....')
 })
 
+
 app.get('/new', (req, res) => {
     res.render('new.ejs');
 })
+
+
 
 
 
@@ -84,7 +89,6 @@ app.get('/:id/edit', (req, res) => {
         });
     });
 });
-
 
 
 app.get('/coin/:coin', (req, res) => {
@@ -111,21 +115,31 @@ app.get('/all', (req, res) => {
     })
 })
 
+
 app.get('/:id', (req, res) => {
     Coin.findById(req.params.id, (err, foundCoin) => {
-        res.render('show.ejs', {
-            coin: foundCoin
-        });
-    });
-});
+        if (err) {
+            res.send('error')
+        } else {
+            res.render('show.ejs', {
+                coin: foundCoin
+            })
+        }
+    })
+})
+
 
 app.get('/', (req, res) => {
-    Coin.distinct("coin", (error, allCoins) => {
-        res.render(
-            'index.ejs', {
-                transactions: allCoins
-            }
-        )
+    Coin.find({}, (err, allCoins) => {
+        Coin.distinct("coin", (error, yourCoins) => {
+            res.render(
+                'index.ejs', {
+                    transactions: yourCoins,
+                    all: allCoins
+                }
+            )
+
+        })
     })
 })
 

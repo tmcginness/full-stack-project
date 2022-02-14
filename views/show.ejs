@@ -2,29 +2,32 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title></title>
+    <%- include('./partials/head'); %>
+        <title>Transaction</title>
 </head>
 
 <body>
-    <h1>Transactions show page</h1>
+    <h1>
+        <%=coin.transactionType%>
+    </h1>
 
-    <% if(coin.transactionType === "BUY"){ %>
+    <% if(coin.transactionType === 'BUY'){ %>
         You bought
-        <%=coin.amount;%>
-            <%=coin.coin; %> on
-                <%=coin.date; %>. The total cost was
-                    <%=coin.value; %>
+        <%=coin.amount%>
+            <%=coin.coin %> on
+                <%=coin.date %>. The total cost was
+                    <%=coin.value %>
                         <% } else { %>
                             You sold
-                            <%=coin.coin; %> on
-                                <%=coin.date; %>. The total received was
-                                    <%=coin.value; %>
-                                        <% } %>
+                            <%=coin.amount%>
+                                <%=coin.coin %> on
+                                    <%=coin.date %>. The total received was
+                                        <%=coin.value %>
+                                            <% } %>
 
-                                            <nav>
-                                                <a href="/">Back to Homepage</a>
-                                            </nav>
+                                                <nav>
+                                                    <a href="/">Back to Homepage</a>
+                                                </nav>
 </body>
 
 </html>

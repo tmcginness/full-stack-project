@@ -2,38 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <%- include('./partials/head'); %>
+        <title>Edit Transaction</title>
 </head>
 
 <body>
-    <h1>Edit The Transaction
-    </h1>
+
+    <body class="bg-light">
+        <div class="container-sm">
+            <h1 class="text-center mt-5">Edit This
+                <%=coin.coin%> Transaction
+            </h1>
+            <div class="text-center">
+                <img class="" src="https://cryptoicon-api.vercel.app/api/icon/<%=coin.coin.toLowerCase();%>" alt="<%=coin.coin%> Logo">
+            </div>
+            <form class="m-md-5" action="/<%=coin.id%>?_method=PUT" method="POST">
 
 
-    </form>
-    <form action="/<%=coin.id%>?_method=PUT" method="POST">
-        Coin Symbol:
-        <input type="text" name="coin" value="<%=coin.coin%>" />
-        <br/> Date:
-        <input type="date" name="date" value="<%=coin.date%>" />
-        <br/> Number of coins:
-        <input type="number" name="amount" value="<%=coin.amount%>" />
-        <br/>Value:
-        <input type="number" name="value" value="<%=coin.value%>" />
-        <br/>Transaction Type:
-        <br/>
-        <input type="radio" name="transactionType" value="BUY" />
-        <label for="buy">BUY</label>
-        <input type="radio" name="transactionType" value="SELL" />
-        <label for="sell">SELL</label>
-        <br/>
-        <input type="submit" name="Create Transaction" value="Submit Changes" />
-        <br/>
+                <div class="form-group p-1">
+                    <label for="coin">Coin Symbol:</label>
+                    <input type="text" name="coin" value="<%=coin.coin%>" class="form-control">
+                </div>
+                <div class="form-group p-1">
+                    <label for="date">Date:</label>
+                    <input type="date" name="date" value="<%=coin.date%>" class="form-control">
+                </div>
+                <div class="form-group p-1">
+                    <label for="amount">Number of Coins Bought/Sold:</label>
+                    <input type="number" name="amount" value="<%=coin.amount%>" class="form-control">
+                </div>
+                <div class="form-group p-1">
+                    <label for="value">Value:</label>
+                    <input type="number" name="value" value="<%=coin.value%>" class="form-control">
+                </div>
+                <label for="transactionType">Transaction Type:</label>
+                <div class="form-check">
+                    <input type="radio" name="transactionType" value="BUY" class="form-check-input" />
+                    <label class="form-check-label" for="buy">BUY</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="transactionType" value="SELL" class="form-check-input" />
+                    <label class="form-check-label" for="sell">SELL</label>
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-dark" type="submit" name="Submit Changes" />
+                </div>
 
-    </form>
-</body>
+
+            </form>
+
+        </div>
+    </body>
 
 </html>
