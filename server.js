@@ -140,6 +140,8 @@ app.get('/', (req, res) => {
             )
 
         })
+    }).sort({
+        date: -1
     })
 })
 

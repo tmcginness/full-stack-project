@@ -56,13 +56,55 @@
                                             Balance:
                                             <%=coinBalance %>
                                         </div>
-
-
-
-
                             </div>
                             <% } %>
                 </div>
+                <div class="mt-5 row">
+                    <h2 class="pb-3 text-center">Your Recent Transactions</h2>
+                    <table class="text-center w-100">
+                        <% for (let i = 0; i < 5; i++){%>
+
+                            <tr class="border">
+                                <td>
+
+                                    <%=all[i].coin; %>
+
+                                </td>
+                                <td>
+                                    <%=all[i].amount; %>
+                                </td>
+                                <td>
+                                    <%=all[i].date; %>
+                                </td>
+                                <td>
+                                    <%=all[i].value; %>
+                                </td>
+                                <td>
+                                    <%=all[i].transactionType; %>
+                                </td>
+                                <td>
+                                    <a class="w-100 btn btn-dark" href="<%=all[i].id; %>">View</a>
+                                </td>
+                                <td>
+                                    <a class="w-100 btn btn-dark" href="/<%=all[i].id%>/edit">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="/<%=all[i].id; %>?_method=DELETE" method="POST">
+                                        <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
+                                    </form>
+
+                                </td>
+                            </tr>
+
+
+                            <% } %>
+                    </table>
+
+                </div>
+                <div class="text-center">
+                    <a class="m-5 btn btn-dark" href="/all">View All Transactions</a>
+                </div>
+
     </div>
 
 
