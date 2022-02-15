@@ -21,6 +21,13 @@ label {
     height: 400px !important;
 }
 
-/* td {
-    border: 1px solid black !important;
-} */
+/* Media Q's */
+
+@media (max-width: 700px) {
+    .date {
+        display: none;
+    }
+    .phone {
+        display: none;
+    }
+}

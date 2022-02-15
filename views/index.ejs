@@ -35,7 +35,8 @@
                     height="480" src="https://charts.mongodb.com/charts-project-0-djibx/embed/charts?id=620c0a48-2989-4cbb-8dba-68907695f839&maxDataAge=60&theme=light&autoRefresh=true"></iframe>
 
                 <!-- Find Unique Coins -->
-                <div class="row ">
+                <div class=" row ">
+                    <h2 class="p-5 text-center">Your Coin Balances</h2>
                     <% for (let i = 0; i <transactions.length; i++){%>
                         <% let currentCoin = transactions[i] %>
 
@@ -70,55 +71,57 @@
                 <!-- Recent (5) Transactions Table -->
                 <div class="mt-5 row">
                     <h2 class="pb-3 text-center">Your Recent Transactions</h2>
-                    <table class="table table-striped text-center w-100">
-                        <thead>
-                            <tr>
-                                <th scope="col">Coin</th>
-                                <th scope="col">Amount</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Value</th>
-                                <th scope="col">Type</th>
-                            </tr>
-                        </thead>
-                        <% for (let i = 0; i < 5; i++){%>
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center w-100">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Coin</th>
+                                    <th scope="col">Amount</th>
+                                    <th class="date" scope="col">Date</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">Type</th>
+                                </tr>
+                            </thead>
+                            <% for (let i = 0; i < 5; i++){%>
 
-                            <tr class="border">
-                                <td>
+                                <tr class="border">
+                                    <td>
 
-                                    <%=all[i].coin; %>
+                                        <%=all[i].coin; %>
 
-                                </td>
-                                <td>
-                                    <%=all[i].amount; %>
-                                </td>
-                                <td>
-                                    <%=all[i].date; %>
-                                </td>
-                                <td>
-                                    $
-                                    <%=all[i].value; %>
-                                </td>
-                                <td>
-                                    <%=all[i].transactionType; %>
-                                </td>
-                                <td>
-                                    <a class="w-100 btn btn-dark" href="<%=all[i].id; %>">View</a>
-                                </td>
-                                <td>
-                                    <a class="w-100 btn btn-dark" href="/<%=all[i].id%>/edit">Edit</a>
-                                </td>
-                                <td>
-                                    <form action="/<%=all[i].id; %>?_method=DELETE" method="POST">
-                                        <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
-                                    </form>
+                                    </td>
+                                    <td>
+                                        <%=all[i].amount; %>
+                                    </td>
+                                    <td class="date">
+                                        <%=all[i].date; %>
+                                    </td>
+                                    <td>
+                                        $
+                                        <%=all[i].value; %>
+                                    </td>
+                                    <td>
+                                        <%=all[i].transactionType; %>
+                                    </td>
+                                    <td>
+                                        <a class="w-100 btn btn-dark" href="<%=all[i].id; %>">View</a>
+                                    </td>
+                                    <td class="phone">
+                                        <a class="w-100 btn btn-dark" href="/<%=all[i].id%>/edit">Edit</a>
+                                    </td>
+                                    <td class="phone">
+                                        <form action="/<%=all[i].id; %>?_method=DELETE" method="POST">
+                                            <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
 
-                                </td>
-                            </tr>
+                                        </form>
+
+                                    </td>
+                                </tr>
 
 
-                            <% } %>
-                    </table>
-
+                                <% } %>
+                        </table>
+                    </div>
                 </div>
                 <div class="text-center">
                     <a class="m-5 btn btn-dark" href="/all">View All Transactions</a>

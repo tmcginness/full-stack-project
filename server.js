@@ -112,6 +112,8 @@ app.get('/all', (req, res) => {
                 transactions: allCoins
             }
         )
+    }).sort({
+        date: -1
     })
 })
 

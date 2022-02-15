@@ -30,7 +30,7 @@
                     <tr>
                         <th scope="col">Coin</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Date</th>
+                        <th class="date" scope="col">Date</th>
                         <th scope="col">Value</th>
                         <th scope="col">Type</th>
                     </tr>
@@ -40,30 +40,30 @@
                     <tr class="border">
                         <td>
 
-                            <%=coin[0].coin; %>
+                            <%=coin[i].coin; %>
 
                         </td>
                         <td>
-                            <%=coin[0].amount; %>
+                            <%=coin[i].amount; %>
                         </td>
-                        <td>
-                            <%=coin[0].date; %>
+                        <td class="date">
+                            <%=coin[i].date; %>
                         </td>
                         <td>
                             $
-                            <%=coin[0].value; %>
+                            <%=coin[i].value; %>
                         </td>
                         <td>
-                            <%=coin[0].transactionType; %>
+                            <%=coin[i].transactionType; %>
                         </td>
                         <td>
-                            <a class="w-100 btn btn-dark" href="/<%=coin[0].id; %>">View</a>
+                            <a class="w-100 btn btn-dark" href="/<%=coin[i].id; %>">View</a>
                         </td>
-                        <td>
-                            <a class="w-100 btn btn-dark" href="/<%=coin[0].id%>/edit">Edit</a>
+                        <td class="phone">
+                            <a class="w-100 btn btn-dark" href="/<%=coin[i].id%>/edit">Edit</a>
                         </td>
-                        <td>
-                            <form action="/<%=coin[0].id; %>?_method=DELETE" method="POST">
+                        <td class="phone">
+                            <form action="/<%=coin[i].id; %>?_method=DELETE" method="POST">
                                 <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
                             </form>
 
