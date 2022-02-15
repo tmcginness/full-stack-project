@@ -17,47 +17,64 @@
             <p id='infotime'></p>
         </div>
         <!-- All credit to Luciano Sphere @ https://towardsdatascience.com/obtaining-historical-and-real-time-crypto-data-with-very-simple-web-programming-7b481f153630 -->
+        <div class="text-center">
+            <a class="btn mt-3 btn-dark" href="/">Return to Dashboard</a>
+            <a class="btn mt-3 btn-dark" href="/new">Add a new transaction!</a>
+        </div>
+        <div class="mt-5 row">
+            <h2 class="pb-3 text-center">
+                Your
+                <%=coin[0].coin%> transactions </h2>
+            <table class="table table-striped text-center w-100">
+                <thead>
+                    <tr>
+                        <th scope="col">Coin</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <% for (let i = 0; i < coin.length; i++){%>
+
+                    <tr class="border">
+                        <td>
+
+                            <%=coin[0].coin; %>
+
+                        </td>
+                        <td>
+                            <%=coin[0].amount; %>
+                        </td>
+                        <td>
+                            <%=coin[0].date; %>
+                        </td>
+                        <td>
+                            $
+                            <%=coin[0].value; %>
+                        </td>
+                        <td>
+                            <%=coin[0].transactionType; %>
+                        </td>
+                        <td>
+                            <a class="w-100 btn btn-dark" href="/<%=coin[0].id; %>">View</a>
+                        </td>
+                        <td>
+                            <a class="w-100 btn btn-dark" href="/<%=coin[0].id%>/edit">Edit</a>
+                        </td>
+                        <td>
+                            <form action="/<%=coin[0].id; %>?_method=DELETE" method="POST">
+                                <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
+                            </form>
+
+                        </td>
+                    </tr>
 
 
-        <h3>Your
-            <%=coin[0].coin%> transactions - </h3>
+                    <% } %>
+            </table>
 
-        <table class="w-100">
-            <% for (let i = 0; i <coin.length; i++){%>
-
-                <tr class="border p-3">
-                    <td>
-                        <a href="/<%=coin[i].id; %>">
-                            <%=coin[i].coin; %>
-                        </a>
-                    </td>
-                    <td>
-                        <%=coin[i].amount; %>
-                    </td>
-                    <td>
-                        <%=coin[i].date; %>
-                    </td>
-                    <td>
-                        <%=coin[i].value; %>
-                    </td>
-                    <td>
-                        <%=coin[i].transactionType; %>
-                    </td>
-                    <td>
-                        <a class="btn btn-dark" href="/<%=coin[i].id%>/edit">Edit</a>
-                    </td>
-                    <td>
-                        <form action="/<%=coin[i].id; %>?_method=DELETE" method="POST">
-                            <input class="btn btn-dark" type="submit" value="DELETE">
-                        </form>
-
-                    </td>
-                </tr>
-
-
-                <% } %>
-        </table>
-    </div>
+        </div>
 
 </body>
 

@@ -1,7 +1,26 @@
+* {
+    font-family: 'Titillium Web', sans-serif;
+}
+
 .coinImg {
     width: 90px;
+}
+
+.coinTitle,
+.coinTitle a,
+.coinBalance {
+    font-size: 24px;
+    text-decoration: none;
 }
 
 label {
     font-weight: 700;
 }
+
+#myChart {
+    height: 400px !important;
+}
+
+/* td {
+    border: 1px solid black !important;
+} */

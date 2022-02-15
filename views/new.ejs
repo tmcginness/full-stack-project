@@ -13,19 +13,19 @@
             <h1 class="text-center">New Transaction Here!</h1>
             <div class="form-group p-1">
                 <label for="coin">Coin Symbol:</label>
-                <input type="text" name="coin" class="form-control">
+                <input required type="text" name="coin" class="form-control">
             </div>
             <div class="form-group p-1">
                 <label for="date">Date:</label>
-                <input type="date" name="date" class="form-control">
+                <input required type="date" name="date" class="form-control">
             </div>
             <div class="form-group p-1">
                 <label for="amount">Number of Coins Bought/Sold:</label>
-                <input type="number" name="amount" class="form-control">
+                <input required type="number" name="amount" class="form-control">
             </div>
             <div class="form-group p-1">
                 <label for="value">Value:</label>
-                <input type="number" name="value" class="form-control">
+                <input required type="number" name="value" class="form-control">
             </div>
             <label for="transactionType">Transaction Type:</label>
             <div class="form-check">
@@ -36,7 +36,9 @@
                 <input type="radio" name="transactionType" value="SELL" class="form-check-input" />
                 <label class="form-check-label" for="sell">SELL</label>
             </div>
+
             <div class="text-center">
+                <a class="btn btn-dark" href="/">Cancle</a>
                 <input class="btn btn-dark" type="submit" name="Create Transaction" />
             </div>
 
