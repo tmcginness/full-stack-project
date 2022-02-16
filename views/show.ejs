@@ -8,31 +8,49 @@
 
 <body>
     <div class="container">
-        <h1>Your
+        <h1 class="mb-5 mt-3 text-center">Your
             <%=coin.coin %> Transaction
-
         </h1>
-        <% if(coin.transactionType === 'BUY'){ %>
-            You bought
-            <%=coin.amount%>
-                <%=coin.coin %> on
-                    <%=coin.date %>. The total cost was
-                        <%=coin.value %>
-                            <% } else { %>
-                                You sold
-                                <%=coin.amount%>
-                                    <%=coin.coin %> on
-                                        <%=coin.date %>. The total received was
-                                            <%=coin.value %>
-                                                <% } %>
 
-                                                    <nav>
-                                                        <a href="/">Back to Homepage</a>
-                                                    </nav>
+
+        <div class="single row d-flex">
+            <div class="d-flex justify-content-center align-items-center text-center col-md-4 col-sm-6 p-3 bg-light border">
+                <img class="coinImg" src="https://cryptoicon-api.vercel.app/api/icon/<%=coin.coin.toLowerCase();%>" alt="<%=coin.coin%> Logo">
+            </div>
+            <div class="d-flex justify-content-center align-items-center text-center col-md-4 col-sm-6 p-3 bg-light border">
+
+                <%=coin.coin %>
+            </div>
+            <div class="d-flex justify-content-center align-items-center text-center col-md-4 col-sm-6 p-3 bg-light border">
+                <%=coin.amount%>
+            </div>
+            <div class="d-flex justify-content-center align-items-center text-center col-md-4 col-sm-6 p-3 bg-light border">
+                <%=coin.date %>
+            </div>
+            <div class="d-flex justify-content-center align-items-center text-center col-md-4 col-sm-6 p-3 bg-light border">
+                $
+                <%=coin.value %>
+            </div>
+            <div class="d-flex justify-content-center align-items-center text-center col-md-4 col-sm-6 p-3 bg-light border">
+                <%=coin.transactionType %>
+            </div>
+
+        </div>
+        <div class="mt-5 text-center">
+            <a class="d-inline-block btn btn-dark" href="/">RETURN TO DASHBOARD</a>
+            <a class="d-inline-block btn btn-dark" href="/<%=coin.id%>/edit">EDIT</a>
+
+            <form class="d-inline-block" action="/<%=coin.id; %>?_method=DELETE" method="POST">
+                <input class=" d-inline-block btn btn-dark" type="submit" value="DELETE">
+            </form>
+        </div>
     </div>
 
 
 
+
+
 </body>
+
 
 </html>

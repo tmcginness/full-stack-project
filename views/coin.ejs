@@ -8,13 +8,13 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">
+        <h1 class="mt-3 text-center">
             <%=coin[0].coin%>
         </h1>
         <div class="text-center">
             <img src="https://cryptoicon-api.vercel.app/api/icon/<%=coin[0].coin.toLowerCase();%>" alt="<%=coin[0].coin%> Logo">
-            <p id='info'></p>
-            <p id='infotime'></p>
+            <p id="info"></p>
+            <p id="infotime"></p>
         </div>
         <!-- All credit to Luciano Sphere @ https://towardsdatascience.com/obtaining-historical-and-real-time-crypto-data-with-very-simple-web-programming-7b481f153630 -->
         <div class="text-center">
@@ -25,55 +25,56 @@
             <h2 class="pb-3 text-center">
                 Your
                 <%=coin[0].coin%> transactions </h2>
-            <table class="table table-striped text-center w-100">
-                <thead>
-                    <tr>
-                        <th scope="col">Coin</th>
-                        <th scope="col">Amount</th>
-                        <th class="date" scope="col">Date</th>
-                        <th scope="col">Value</th>
-                        <th scope="col">Type</th>
-                    </tr>
-                </thead>
-                <% for (let i = 0; i < coin.length; i++){%>
+            <div class="table-responsive">
+                <table class="table table-striped text-center w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Coin</th>
+                            <th scope="col">Amount</th>
+                            <th class="date" scope="col">Date</th>
+                            <th scope="col">Value</th>
+                            <th scope="col">Type</th>
+                        </tr>
+                    </thead>
+                    <% for (let i = 0; i < coin.length; i++){%>
 
-                    <tr class="border">
-                        <td>
+                        <tr class="border">
+                            <td>
 
-                            <%=coin[i].coin; %>
+                                <%=coin[i].coin; %>
 
-                        </td>
-                        <td>
-                            <%=coin[i].amount; %>
-                        </td>
-                        <td class="date">
-                            <%=coin[i].date; %>
-                        </td>
-                        <td>
-                            $
-                            <%=coin[i].value; %>
-                        </td>
-                        <td>
-                            <%=coin[i].transactionType; %>
-                        </td>
-                        <td>
-                            <a class="w-100 btn btn-dark" href="/<%=coin[i].id; %>">View</a>
-                        </td>
-                        <td class="phone">
-                            <a class="w-100 btn btn-dark" href="/<%=coin[i].id%>/edit">Edit</a>
-                        </td>
-                        <td class="phone">
-                            <form action="/<%=coin[i].id; %>?_method=DELETE" method="POST">
-                                <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
-                            </form>
+                            </td>
+                            <td>
+                                <%=coin[i].amount; %>
+                            </td>
+                            <td class="date">
+                                <%=coin[i].date; %>
+                            </td>
+                            <td>
+                                $
+                                <%=coin[i].value; %>
+                            </td>
+                            <td>
+                                <%=coin[i].transactionType; %>
+                            </td>
+                            <td>
+                                <a class="w-100 btn btn-dark" href="/<%=coin[i].id; %>">VIEW</a>
+                            </td>
+                            <td class="phone">
+                                <a class="w-100 btn btn-dark" href="/<%=coin[i].id%>/edit">EDIT</a>
+                            </td>
+                            <td class="phone">
+                                <form action="/<%=coin[i].id; %>?_method=DELETE" method="POST">
+                                    <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
+                                </form>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
 
-                    <% } %>
-            </table>
-
+                        <% } %>
+                </table>
+            </div>
         </div>
 
 </body>

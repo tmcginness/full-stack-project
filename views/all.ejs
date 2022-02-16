@@ -17,7 +17,7 @@
 
                         <div class="mb-5 mt-3 text-center">
                             <h1 class="display-4 balance">
-                                Portfolio Balance:
+                                Portfolio Balance:$
                                 <%=portfolioBalance%>
                             </h1>
                         </div>
@@ -28,55 +28,56 @@
 
 
                         <div class="mt-5 row">
-                            <table class="table table-striped text-center w-100">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Coin</th>
-                                        <th scope="col">Amount</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Value</th>
-                                        <th scope="col">Type</th>
-                                    </tr>
-                                </thead>
-                                <% for (let i = 0; i < transactions.length; i++){%>
+                            <div class="table-responsive">
+                                <table class="table table-striped text-center w-100">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Coin</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Value</th>
+                                            <th scope="col">Type</th>
+                                        </tr>
+                                    </thead>
+                                    <% for (let i = 0; i < transactions.length; i++){%>
 
-                                    <tr class="border">
-                                        <td>
+                                        <tr class="border">
+                                            <td>
 
-                                            <%=transactions[i].coin; %>
+                                                <%=transactions[i].coin; %>
 
-                                        </td>
-                                        <td>
-                                            <%=transactions[i].amount; %>
-                                        </td>
-                                        <td>
-                                            <%=transactions[i].date; %>
-                                        </td>
-                                        <td>
-                                            $
-                                            <%=transactions[i].value; %>
-                                        </td>
-                                        <td>
-                                            <%=transactions[i].transactionType; %>
-                                        </td>
-                                        <td>
-                                            <a class="w-100 btn btn-dark" href="<%=transactions[i].id; %>">View</a>
-                                        </td>
-                                        <td>
-                                            <a class="w-100 btn btn-dark" href="/<%=transactions[i].id%>/edit">Edit</a>
-                                        </td>
-                                        <td>
-                                            <form action="/<%=transactions[i].id; %>?_method=DELETE" method="POST">
-                                                <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
-                                            </form>
+                                            </td>
+                                            <td>
+                                                <%=transactions[i].amount; %>
+                                            </td>
+                                            <td>
+                                                <%=transactions[i].date; %>
+                                            </td>
+                                            <td>
+                                                $
+                                                <%=transactions[i].value; %>
+                                            </td>
+                                            <td>
+                                                <%=transactions[i].transactionType; %>
+                                            </td>
+                                            <td>
+                                                <a class="w-100 btn btn-dark" href="<%=transactions[i].id; %>">View</a>
+                                            </td>
+                                            <td>
+                                                <a class="w-100 btn btn-dark" href="/<%=transactions[i].id%>/edit">Edit</a>
+                                            </td>
+                                            <td>
+                                                <form action="/<%=transactions[i].id; %>?_method=DELETE" method="POST">
+                                                    <input class=" w-100 btn btn-dark" type="submit" value="DELETE">
+                                                </form>
 
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
 
 
-                                    <% } %>
-                            </table>
-
+                                        <% } %>
+                                </table>
+                            </div>
                         </div>
     </div>
 

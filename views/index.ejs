@@ -21,7 +21,8 @@
                 } %>
                 <!-- Done -->
                 <div class="mb-5 mt-3 text-center">
-                    <h1 class="display-4 balance">Portfolio Balance: $
+                    <h1 class="display-4 balance">Portfolio Balance:
+                        <br/> $
                         <span id="balance">
                             <%=portfolioBalance%>
                         </span>
@@ -36,13 +37,13 @@
 
                 <!-- Find Unique Coins -->
                 <div class=" row ">
-                    <h2 class="p-5 text-center">Your Coin Balances</h2>
+                    <h2 class="p-5 text-center ">Your Coin Balances</h2>
                     <% for (let i = 0; i <transactions.length; i++){%>
                         <% let currentCoin = transactions[i] %>
 
-                            <div class="text-center col-md-4 col-sm-6 p-3 bg-light border">
-                                <div class="coinTitle">
-                                    <a class="text-dark" href="/coin/<%=transactions[i]%>">
+                            <div class="text-center col-md-4 col-sm-6 p-3 bg-light border ">
+                                <div class="coinTitle ">
+                                    <a class="text-dark " href="/coin/<%=transactions[i]%>">
                                         <%= currentCoin %>
                                     </a>
                                 </div>
@@ -72,7 +73,7 @@
                 <div class="mt-5 row">
                     <h2 class="pb-3 text-center">Your Recent Transactions</h2>
                     <div class="table-responsive">
-                        <table class="table table-striped text-center w-100">
+                        <table style="box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" class="table table-light table-striped text-center w-100">
                             <thead>
                                 <tr>
                                     <th scope="col">Coin</th>
@@ -80,6 +81,9 @@
                                     <th class="date" scope="col">Date</th>
                                     <th scope="col">Value</th>
                                     <th scope="col">Type</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <% for (let i = 0; i < 5; i++){%>
@@ -104,10 +108,10 @@
                                         <%=all[i].transactionType; %>
                                     </td>
                                     <td>
-                                        <a class="w-100 btn btn-dark" href="<%=all[i].id; %>">View</a>
+                                        <a class="w-100 btn btn-dark" href="<%=all[i].id; %>">VIEW</a>
                                     </td>
                                     <td class="phone">
-                                        <a class="w-100 btn btn-dark" href="/<%=all[i].id%>/edit">Edit</a>
+                                        <a class="w-100 btn btn-dark" href="/<%=all[i].id%>/edit">EDIT</a>
                                     </td>
                                     <td class="phone">
                                         <form action="/<%=all[i].id; %>?_method=DELETE" method="POST">
