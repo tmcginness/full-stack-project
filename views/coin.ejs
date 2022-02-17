@@ -3,7 +3,9 @@
 
 <head>
     <%- include('./partials/head'); %>
-        <title>Coin</title>
+        <title>
+            <%=coin[0].coin%>
+        </title>
 </head>
 
 <body>
@@ -11,6 +13,7 @@
         <h1 class="mt-3 text-center">
             <%=coin[0].coin%>
         </h1>
+        <!-- Find current Coin Price -->
         <div class="text-center">
             <img src="https://cryptoicon-api.vercel.app/api/icon/<%=coin[0].coin.toLowerCase();%>" alt="<%=coin[0].coin%> Logo">
             <p id="info"></p>
@@ -57,6 +60,7 @@
                             <td>
                                 <%=coin[i].transactionType; %>
                             </td>
+                            <!-- Buttons -->
                             <td>
                                 <a class="w-100 btn btn-dark" href="/<%=coin[i].id; %>">VIEW</a>
                             </td>

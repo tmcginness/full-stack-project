@@ -9,6 +9,7 @@
 
 <body>
     <div class="container-md">
+        <!-- Find Portfolio Balance -->
         <% let portfolioBalance = 0 %>
 
             <% for (let i = 0; i < transactions.length; i++) { %>
@@ -21,12 +22,13 @@
                                 <%=portfolioBalance%>
                             </h1>
                         </div>
+                        <!-- Buttons -->
                         <div class="text-center">
                             <a class="btn mt-3 btn-dark" href="/">Return to Dashboard</a>
                             <a class="btn mt-3 btn-dark" href="/new">Add a new transaction!</a>
                         </div>
 
-
+                        <!-- List all transactions in a table -->
                         <div class="mt-5 row">
                             <div class="table-responsive">
                                 <table class="table table-striped text-center w-100">
@@ -60,6 +62,7 @@
                                             <td>
                                                 <%=transactions[i].transactionType; %>
                                             </td>
+                                            <!-- Buttons -->
                                             <td>
                                                 <a class="w-100 btn btn-dark" href="<%=transactions[i].id; %>">View</a>
                                             </td>
