@@ -7,6 +7,7 @@ Mongo DB
 Mongoose
 Express JS
 Heroku
+Node JS
 
 This app is a cryptocurrency portfolio tracker that allows you to input your transactions, both purchases and sales. It shows a graph that tracks your balance over time, which updates after a minute. 
 
